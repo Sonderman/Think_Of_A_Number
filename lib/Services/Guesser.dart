@@ -1,12 +1,9 @@
 class Guesser {
-  Guesser._internal();
-  static final Guesser _singleton = Guesser._internal();
+  int k3, k5, k7;
+  String resultsText;
+  List<int> results;
 
-  factory Guesser() {
-    return _singleton;
-  }
-
-  Future<List<int>> guess(int k3, int k5, int k7) {
+  void guess() {
     int firstTotal = 0;
     List<int> moddedList = [];
     if (k3 > 0) {
@@ -25,11 +22,11 @@ class Guesser {
       moddedList.add(firstTotal);
     }
 
-    List<int> results = validate(k3, k5, k7, moddedList);
-    return Future.value(results);
+    results = validate(moddedList);
+    resultsText = resultsMergerToText();
   }
 
-  List<int> validate(int k3, int k5, int k7, List<int> moddedList) {
+  List<int> validate(List<int> moddedList) {
     List<int> results = [];
     moddedList.forEach((number) {
       if (number % 3 == k3 && number % 5 == k5 && number % 7 == k7) {
@@ -37,5 +34,18 @@ class Guesser {
       }
     });
     return results;
+  }
+
+  String resultsMergerToText() {
+    if (results.length == 0) return "NO RESULT!";
+    String tahmin = "";
+    int i = 0;
+    results.forEach((result) {
+      if (i != 0) tahmin += ",";
+      tahmin += "$result";
+      i++;
+    });
+
+    return tahmin;
   }
 }
