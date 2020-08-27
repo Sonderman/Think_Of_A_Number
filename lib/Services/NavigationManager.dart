@@ -12,4 +12,9 @@ class NavigationManager {
   void restart() {
     homePageController.jumpToPage(0);
   }
+
+  void previous() {
+    homePageController.previousPage(
+        duration: Duration(seconds: 1), curve: Curves.ease);
+  }
 }

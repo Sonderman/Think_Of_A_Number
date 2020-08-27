@@ -35,7 +35,11 @@ class Results extends StatelessWidget {
             Card(
                 color: Colors.blue,
                 child: IconButton(
-                    icon: Icon(Icons.play_circle_outline),
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.replay,
+                      color: Colors.white,
+                    ),
                     onPressed: () {
                       Services.guesser.k3 = null;
                       Services.guesser.k5 = null;
@@ -54,14 +58,15 @@ class Results extends StatelessWidget {
 
   List<Widget> resultsToCard() {
     List<Card> results = [];
-    Services.guesser.results.forEach((result) {
-      results.add(Card(
-        color: Colors.brown,
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(result.toString(), style: MyTheme().numberBig),
-        ),
-      ));
+    Services.guesser.getResults().forEach((result) {
+      if (result != null)
+        results.add(Card(
+          color: Colors.brown,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(result.toString(), style: MyTheme().numberBig),
+          ),
+        ));
     });
     return results;
   }

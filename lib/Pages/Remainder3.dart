@@ -92,17 +92,35 @@ class _Remainder3State extends State<Remainder3> {
         ),
         Row(
           children: [
+            SizedBox(
+              width: 30,
+            ),
+            Card(
+                color: Colors.blue,
+                child: IconButton(
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.navigate_before,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Services.navigationManager.previous();
+                    })),
             Spacer(),
             Card(
                 color: Colors.blue,
                 child: IconButton(
-                    icon: Icon(Icons.navigate_next),
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.navigate_next,
+                      color: Colors.white,
+                    ),
                     onPressed: () {
                       if (Services.guesser.k3 != null)
                         Services.navigationManager.nextPage();
                       else
                         Fluttertoast.showToast(
-                            msg: "Please Select A Remainder Value",
+                            msg: "Lütfen bir kalan değeri seçin!",
                             toastLength: Toast.LENGTH_SHORT,
                             gravity: ToastGravity.BOTTOM,
                             timeInSecForIosWeb: 1,

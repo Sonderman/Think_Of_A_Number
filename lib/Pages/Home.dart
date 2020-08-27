@@ -3,6 +3,7 @@ import 'package:think_of_a_number/Pages/Remainder3.dart';
 import 'package:think_of_a_number/Pages/Remainder5.dart';
 import 'package:think_of_a_number/Pages/Remainder7.dart';
 import 'package:think_of_a_number/Pages/Results.dart';
+import 'package:think_of_a_number/Pages/Welcome.dart';
 import 'package:think_of_a_number/Services.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,7 +21,13 @@ class _HomePageState extends State<HomePage> {
             body: PageView(
       physics: NeverScrollableScrollPhysics(),
       controller: Services.navigationManager.homePageController,
-      children: [Remainder3(), Remainder5(), Remainder7(), Results()],
+      children: [
+        Welcome(),
+        Remainder3(),
+        Remainder5(),
+        Remainder7(),
+        Results()
+      ],
     )));
   }
 }

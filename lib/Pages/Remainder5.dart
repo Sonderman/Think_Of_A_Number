@@ -100,8 +100,9 @@ class _Remainder5State extends State<Remainder5> {
                       });
                     },
                     child: Card(
-                      color:
-                          Services.guesser.k5 == 3 ? Colors.black : Colors.blue,
+                      color: Services.guesser.k5 == 3
+                          ? Colors.black
+                          : Colors.orange,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -120,7 +121,7 @@ class _Remainder5State extends State<Remainder5> {
                     child: Card(
                       color: Services.guesser.k5 == 4
                           ? Colors.black
-                          : Colors.green,
+                          : Colors.purple,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -137,17 +138,35 @@ class _Remainder5State extends State<Remainder5> {
         ),
         Row(
           children: [
+            SizedBox(
+              width: 30,
+            ),
+            Card(
+                color: Colors.blue,
+                child: IconButton(
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.navigate_before,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Services.navigationManager.previous();
+                    })),
             Spacer(),
             Card(
                 color: Colors.blue,
                 child: IconButton(
-                    icon: Icon(Icons.navigate_next),
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.navigate_next,
+                      color: Colors.white,
+                    ),
                     onPressed: () {
                       if (Services.guesser.k5 != null)
                         Services.navigationManager.nextPage();
                       else
                         Fluttertoast.showToast(
-                            msg: "Please Select A Remainder Value",
+                            msg: "Lütfen bir kalan değeri seçin!",
                             toastLength: Toast.LENGTH_SHORT,
                             gravity: ToastGravity.BOTTOM,
                             timeInSecForIosWeb: 1,

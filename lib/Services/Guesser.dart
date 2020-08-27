@@ -1,6 +1,8 @@
+enum GuessMode { ZeroTo100, OneHundredTo200 }
+
 class Guesser {
   int k3, k5, k7;
-  String resultsText;
+  GuessMode mode = GuessMode.ZeroTo100;
   List<int> results;
 
   void guess() {
@@ -22,30 +24,36 @@ class Guesser {
       moddedList.add(firstTotal);
     }
 
-    results = validate(moddedList);
-    resultsText = resultsMergerToText();
+    results = moddedList.map((number) {
+      if (validate(number)) return number;
+    }).toList()
+      ..removeWhere((element) => element == null);
   }
 
-  List<int> validate(List<int> moddedList) {
-    List<int> results = [];
-    moddedList.forEach((number) {
-      if (number % 3 == k3 && number % 5 == k5 && number % 7 == k7) {
-        results.add(number);
-      }
-    });
-    return results;
+  bool validate(int number) {
+    if (number % 3 == k3 && number % 5 == k5 && number % 7 == k7) {
+      return true;
+    } else
+      return false;
   }
 
-  String resultsMergerToText() {
-    if (results.length == 0) return "NO RESULT!";
-    String tahmin = "";
-    int i = 0;
-    results.forEach((result) {
-      if (i != 0) tahmin += ",";
-      tahmin += "$result";
-      i++;
-    });
-
-    return tahmin;
+  List<int> getResults() {
+    switch (mode) {
+      case GuessMode.ZeroTo100:
+        return results.map((result) {
+          if (result > 0 && result <= 100) return result;
+        }).toList();
+        break;
+      case GuessMode.OneHundredTo200:
+        return results.map((result) {
+          while (!(result > 100 && result <= 200 && validate(result))) {
+            result += 35;
+          }
+          return result;
+        }).toList();
+        break;
+      default:
+        return [];
+    }
   }
 }

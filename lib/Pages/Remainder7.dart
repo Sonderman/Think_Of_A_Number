@@ -100,8 +100,9 @@ class _Remainder7State extends State<Remainder7> {
                       });
                     },
                     child: Card(
-                      color:
-                          Services.guesser.k7 == 3 ? Colors.black : Colors.blue,
+                      color: Services.guesser.k7 == 3
+                          ? Colors.black
+                          : Colors.orange,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -120,7 +121,7 @@ class _Remainder7State extends State<Remainder7> {
                     child: Card(
                       color: Services.guesser.k7 == 4
                           ? Colors.black
-                          : Colors.green,
+                          : Colors.purple,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -145,8 +146,9 @@ class _Remainder7State extends State<Remainder7> {
                       });
                     },
                     child: Card(
-                      color:
-                          Services.guesser.k7 == 5 ? Colors.black : Colors.blue,
+                      color: Services.guesser.k7 == 5
+                          ? Colors.black
+                          : Colors.brown,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -165,7 +167,7 @@ class _Remainder7State extends State<Remainder7> {
                     child: Card(
                       color: Services.guesser.k7 == 6
                           ? Colors.black
-                          : Colors.green,
+                          : Colors.amber,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
@@ -182,18 +184,36 @@ class _Remainder7State extends State<Remainder7> {
         ),
         Row(
           children: [
+            SizedBox(
+              width: 30,
+            ),
+            Card(
+                color: Colors.blue,
+                child: IconButton(
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.navigate_before,
+                      color: Colors.white,
+                    ),
+                    onPressed: () {
+                      Services.navigationManager.previous();
+                    })),
             Spacer(),
             Card(
                 color: Colors.blue,
                 child: IconButton(
-                    icon: Icon(Icons.navigate_next),
+                    iconSize: 40,
+                    icon: Icon(
+                      Icons.navigate_next,
+                      color: Colors.white,
+                    ),
                     onPressed: () {
                       if (Services.guesser.k7 != null) {
                         Services.guesser.guess();
                         Services.navigationManager.nextPage();
                       } else
                         Fluttertoast.showToast(
-                            msg: "Please Select A Remainder Value",
+                            msg: "Lütfen bir kalan değeri seçin!",
                             toastLength: Toast.LENGTH_SHORT,
                             gravity: ToastGravity.BOTTOM,
                             timeInSecForIosWeb: 1,
