@@ -20,7 +20,7 @@ class _Remainder7State extends State<Remainder7> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "7'e  Bölümünden kalanı seçiniz.",
+                "7'ye  Bölümünden kalanı seçiniz.",
                 style: MyTheme().textBig,
                 textAlign: TextAlign.center,
               ),

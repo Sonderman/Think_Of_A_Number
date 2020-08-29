@@ -7,48 +7,59 @@ class Results extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> results = resultsToCard();
+    print("k3:" +
+        Services.guesser.k3.toString() +
+        "\nk5:" +
+        Services.guesser.k5.toString() +
+        "\nk7:" +
+        Services.guesser.k7.toString());
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Expanded(
-            child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              "Results:",
-              style: MyTheme().textBig,
-            ),
-            //Text(Services.guesser.resultsText),
-            SizedBox(
-              height: 25,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: resultsToCard(),
-            )
-          ],
-        )),
-        Row(
-          children: [
-            SizedBox(
-              width: 30,
-            ),
-            Card(
-                color: Colors.blue,
-                child: IconButton(
-                    iconSize: 40,
-                    icon: Icon(
-                      Icons.replay,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      Services.guesser.k3 = null;
-                      Services.guesser.k5 = null;
-                      Services.guesser.k7 = null;
-                      Services.navigationManager.restart();
-                    })),
-            Spacer(),
-          ],
+        Text(
+          "Sonuç:",
+          style: MyTheme().textBig,
         ),
+        SizedBox(
+          height: 40,
+        ),
+        results.length != 0
+            ? Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: results,
+              )
+            : Card(
+                color: Colors.red,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Lütfen tekrar deneyin! Mod seçimi veya kalan belirtimi işleminde hata yapmış olabilirsiniz.",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+        SizedBox(
+          height: 40,
+        ),
+        Card(
+            color: Colors.blue,
+            child: IconButton(
+                iconSize: 80,
+                icon: Icon(
+                  Icons.replay,
+                  color: Colors.white,
+                ),
+                onPressed: () {
+                  Services.guesser.k3 = null;
+                  Services.guesser.k5 = null;
+                  Services.guesser.k7 = null;
+                  Services.navigationManager.restart();
+                })),
         SizedBox(
           height: 50,
         )
@@ -58,7 +69,7 @@ class Results extends StatelessWidget {
 
   List<Widget> resultsToCard() {
     List<Card> results = [];
-    Services.guesser.getResults().forEach((result) {
+    Services.guesser.getResults().toSet().toList().forEach((result) {
       if (result != null)
         results.add(Card(
           color: Colors.brown,
@@ -68,6 +79,7 @@ class Results extends StatelessWidget {
           ),
         ));
     });
+
     return results;
   }
 }
