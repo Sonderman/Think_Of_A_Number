@@ -7,6 +7,21 @@ void main() {
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
+    builder: (context, child) {
+      return ScrollConfiguration(
+        behavior: MyBehavior(),
+        child: child,
+      );
+    },
     home: HomePage(),
   ));
+}
+
+//Removes Scroll effects
+class MyBehavior extends ScrollBehavior {
+  @override
+  Widget buildViewportChrome(
+      BuildContext context, Widget child, AxisDirection axisDirection) {
+    return child;
+  }
 }

@@ -13,6 +13,14 @@ class Remainder3 extends StatefulWidget {
 class _Remainder3State extends State<Remainder3> {
   @override
   Widget build(BuildContext context) {
+    double width(int pe) {
+      return MediaQuery.of(context).size.width * pe / 100;
+    }
+
+    double height(int pe) {
+      return MediaQuery.of(context).size.height * pe / 100;
+    }
+
     return Column(
       children: [
         Expanded(
@@ -21,11 +29,11 @@ class _Remainder3State extends State<Remainder3> {
             children: [
               Text(
                 "3'e  Bölümünden kalanı seçiniz.",
-                style: MyTheme().textBig,
+                style: MyTheme(context).textBig,
                 textAlign: TextAlign.center,
               ),
               SizedBox(
-                height: 50,
+                height: height(15),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -43,7 +51,7 @@ class _Remainder3State extends State<Remainder3> {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           "0",
-                          style: MyTheme().numberBig,
+                          style: MyTheme(context).numberBig,
                         ),
                       ),
                     ),
@@ -62,7 +70,7 @@ class _Remainder3State extends State<Remainder3> {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           "1",
-                          style: MyTheme().numberBig,
+                          style: MyTheme(context).numberBig,
                         ),
                       ),
                     ),
@@ -80,7 +88,7 @@ class _Remainder3State extends State<Remainder3> {
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
                           "2",
-                          style: MyTheme().numberBig,
+                          style: MyTheme(context).numberBig,
                         ),
                       ),
                     ),
@@ -93,12 +101,12 @@ class _Remainder3State extends State<Remainder3> {
         Row(
           children: [
             SizedBox(
-              width: 30,
+              width: width(10),
             ),
             Card(
                 color: Colors.blue,
                 child: IconButton(
-                    iconSize: 40,
+                    iconSize: width(10),
                     icon: Icon(
                       Icons.navigate_before,
                       color: Colors.white,
@@ -110,7 +118,7 @@ class _Remainder3State extends State<Remainder3> {
             Card(
                 color: Colors.blue,
                 child: IconButton(
-                    iconSize: 40,
+                    iconSize: width(10),
                     icon: Icon(
                       Icons.navigate_next,
                       color: Colors.white,
@@ -129,13 +137,11 @@ class _Remainder3State extends State<Remainder3> {
                             fontSize: 16.0);
                     })),
             SizedBox(
-              width: 30,
+              width: width(10),
             )
           ],
         ),
-        SizedBox(
-          height: 50,
-        )
+        SizedBox(height: height(10))
       ],
     );
   }

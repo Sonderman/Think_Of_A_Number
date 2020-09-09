@@ -7,7 +7,15 @@ class Results extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Widget> results = resultsToCard();
+    double width(int pe) {
+      return MediaQuery.of(context).size.width * pe / 100;
+    }
+
+    double height(int pe) {
+      return MediaQuery.of(context).size.height * pe / 100;
+    }
+
+    List<Widget> results = resultsToCard(context);
     print("k3:" +
         Services.guesser.k3.toString() +
         "\nk5:" +
@@ -19,10 +27,10 @@ class Results extends StatelessWidget {
       children: [
         Text(
           "Sonuç:",
-          style: MyTheme().textBig,
+          style: MyTheme(context).textBig,
         ),
         SizedBox(
-          height: 40,
+          height: height(10),
         ),
         results.length != 0
             ? Row(
@@ -38,18 +46,18 @@ class Results extends StatelessWidget {
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: 18,
+                        fontSize: width(4),
                         fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
         SizedBox(
-          height: 40,
+          height: height(10),
         ),
         Card(
             color: Colors.blue,
             child: IconButton(
-                iconSize: 80,
+                iconSize: width(15),
                 icon: Icon(
                   Icons.replay,
                   color: Colors.white,
@@ -60,14 +68,11 @@ class Results extends StatelessWidget {
                   Services.guesser.k7 = null;
                   Services.navigationManager.restart();
                 })),
-        SizedBox(
-          height: 50,
-        )
       ],
     );
   }
 
-  List<Widget> resultsToCard() {
+  List<Widget> resultsToCard(BuildContext context) {
     List<Card> results = [];
     Services.guesser.getResults().toSet().toList().forEach((result) {
       if (result != null)
@@ -75,7 +80,7 @@ class Results extends StatelessWidget {
           color: Colors.brown,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Text(result.toString(), style: MyTheme().numberBig),
+            child: Text(result.toString(), style: MyTheme(context).numberBig),
           ),
         ));
     });

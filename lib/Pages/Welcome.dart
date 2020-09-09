@@ -11,6 +11,14 @@ class Welcome extends StatefulWidget {
 }
 
 class _WelcomeState extends State<Welcome> {
+  double width(int pe) {
+    return MediaQuery.of(context).size.width * pe / 100;
+  }
+
+  double height(int pe) {
+    return MediaQuery.of(context).size.height * pe / 100;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -18,10 +26,10 @@ class _WelcomeState extends State<Welcome> {
       children: [
         Text(
           "Modu Seçin",
-          style: MyTheme().textBig,
+          style: MyTheme(context).textBig,
         ),
         SizedBox(
-          height: 30,
+          height: height(10),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -40,7 +48,7 @@ class _WelcomeState extends State<Welcome> {
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
                     "0-100",
-                    style: MyTheme().numberBig,
+                    style: MyTheme(context).numberBig,
                   ),
                 ),
               ),
@@ -59,7 +67,7 @@ class _WelcomeState extends State<Welcome> {
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
                     "100-200",
-                    style: MyTheme().numberBig,
+                    style: MyTheme(context).numberBig,
                   ),
                 ),
               ),
@@ -67,12 +75,12 @@ class _WelcomeState extends State<Welcome> {
           ],
         ),
         SizedBox(
-          height: 100,
+          height: height(15),
         ),
         Card(
             color: Colors.blue,
             child: IconButton(
-                iconSize: 80,
+                iconSize: width(15),
                 icon: Icon(
                   Icons.play_circle_outline,
                   color: Colors.white,
