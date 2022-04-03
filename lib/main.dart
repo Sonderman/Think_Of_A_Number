@@ -10,10 +10,10 @@ void main() {
     builder: (context, child) {
       return ScrollConfiguration(
         behavior: MyBehavior(),
-        child: child,
+        child: child!,
       );
     },
-    home: HomePage(),
+    home: const HomePage(),
   ));
 }
 

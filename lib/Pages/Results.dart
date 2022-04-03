@@ -3,7 +3,7 @@ import 'package:think_of_a_number/Services.dart';
 import 'package:think_of_a_number/Theming.dart';
 
 class Results extends StatelessWidget {
-  const Results({Key key}) : super(key: key);
+  const Results({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class Results extends StatelessWidget {
         SizedBox(
           height: height(10),
         ),
-        results.length != 0
+        results.isNotEmpty
             ? Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: results,
@@ -58,7 +58,7 @@ class Results extends StatelessWidget {
             color: Colors.blue,
             child: IconButton(
                 iconSize: width(15),
-                icon: Icon(
+                icon: const Icon(
                   Icons.replay,
                   color: Colors.white,
                 ),
@@ -74,8 +74,8 @@ class Results extends StatelessWidget {
 
   List<Widget> resultsToCard(BuildContext context) {
     List<Card> results = [];
-    Services.guesser.getResults().toSet().toList().forEach((result) {
-      if (result != null)
+    Services.guesser.getResults()?.toSet().toList().forEach((result) {
+      if (result != null) {
         results.add(Card(
           color: Colors.brown,
           child: Padding(
@@ -83,6 +83,7 @@ class Results extends StatelessWidget {
             child: Text(result.toString(), style: MyTheme(context).numberBig),
           ),
         ));
+      }
     });
 
     return results;

@@ -4,7 +4,7 @@ import 'package:think_of_a_number/Services.dart';
 import 'package:think_of_a_number/Theming.dart';
 
 class Remainder7 extends StatefulWidget {
-  Remainder7({Key key}) : super(key: key);
+  const Remainder7({Key? key}) : super(key: key);
 
   @override
   _Remainder7State createState() => _Remainder7State();
