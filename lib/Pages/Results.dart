@@ -1,9 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:think_of_a_number/Services.dart';
 import 'package:think_of_a_number/Theming.dart';
 
 class Results extends StatelessWidget {
-  const Results({Key? key}) : super(key: key);
+  const Results({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,12 +17,10 @@ class Results extends StatelessWidget {
     }
 
     List<Widget> results = resultsToCard(context);
-    print("k3:" +
-        Services.guesser.k3.toString() +
-        "\nk5:" +
-        Services.guesser.k5.toString() +
-        "\nk7:" +
-        Services.guesser.k7.toString());
+    if (kDebugMode) {
+      print(
+          "k3:${Services.guesser.k3}\nk5:${Services.guesser.k5}\nk7:${Services.guesser.k7}");
+    }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

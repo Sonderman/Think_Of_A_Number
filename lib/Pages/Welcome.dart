@@ -4,7 +4,7 @@ import 'package:think_of_a_number/Services/Guesser.dart';
 import 'package:think_of_a_number/Theming.dart';
 
 class Welcome extends StatefulWidget {
-  const Welcome({Key? key}) : super(key: key);
+  const Welcome({super.key});
 
   @override
   _WelcomeState createState() => _WelcomeState();
@@ -81,7 +81,7 @@ class _WelcomeState extends State<Welcome> {
             color: Colors.blue,
             child: IconButton(
                 iconSize: width(15),
-                icon: Icon(
+                icon: const Icon(
                   Icons.play_circle_outline,
                   color: Colors.white,
                 ),

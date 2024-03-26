@@ -6,7 +6,7 @@ class NavigationManager {
 
   void nextPage() {
     homePageController.nextPage(
-        duration: Duration(seconds: 1), curve: Curves.ease);
+        duration: const Duration(seconds: 1), curve: Curves.ease);
   }
 
   void restart() {
@@ -15,6 +15,6 @@ class NavigationManager {
 
   void previous() {
     homePageController.previousPage(
-        duration: Duration(seconds: 1), curve: Curves.ease);
+        duration: const Duration(seconds: 1), curve: Curves.ease);
   }
 }

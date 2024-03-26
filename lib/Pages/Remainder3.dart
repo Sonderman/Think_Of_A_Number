@@ -4,7 +4,7 @@ import 'package:think_of_a_number/Services.dart';
 import 'package:think_of_a_number/Theming.dart';
 
 class Remainder3 extends StatefulWidget {
-  const Remainder3({Key? key}) : super(key: key);
+  const Remainder3({super.key});
 
   @override
   _Remainder3State createState() => _Remainder3State();
@@ -107,26 +107,26 @@ class _Remainder3State extends State<Remainder3> {
                 color: Colors.blue,
                 child: IconButton(
                     iconSize: width(10),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.navigate_before,
                       color: Colors.white,
                     ),
                     onPressed: () {
                       Services.navigationManager.previous();
                     })),
-            Spacer(),
+            const Spacer(),
             Card(
                 color: Colors.blue,
                 child: IconButton(
                     iconSize: width(10),
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.navigate_next,
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      if (Services.guesser.k3 != null)
+                      if (Services.guesser.k3 != null) {
                         Services.navigationManager.nextPage();
-                      else
+                      } else {
                         Fluttertoast.showToast(
                             msg: "Lütfen bir kalan değeri seçin!",
                             toastLength: Toast.LENGTH_SHORT,
@@ -135,6 +135,7 @@ class _Remainder3State extends State<Remainder3> {
                             backgroundColor: Colors.red,
                             textColor: Colors.white,
                             fontSize: 16.0);
+                      }
                     })),
             SizedBox(
               width: width(10),

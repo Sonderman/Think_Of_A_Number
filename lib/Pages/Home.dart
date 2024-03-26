@@ -7,7 +7,7 @@ import 'package:think_of_a_number/Pages/Welcome.dart';
 import 'package:think_of_a_number/Services.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
             body: PageView(
       physics: const NeverScrollableScrollPhysics(),
       controller: Services.navigationManager.homePageController,
-      children: [
+      children: const [
         Welcome(),
         Remainder3(),
         Remainder5(),
