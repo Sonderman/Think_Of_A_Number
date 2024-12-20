@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:think_of_a_number/Services.dart';
-import 'package:think_of_a_number/Theming.dart';
+import 'package:think_of_a_number/services.dart';
+import 'package:think_of_a_number/theming.dart';
 
 class Remainder7 extends StatefulWidget {
   const Remainder7({super.key});

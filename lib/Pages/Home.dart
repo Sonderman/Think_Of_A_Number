@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:think_of_a_number/Pages/Remainder3.dart';
-import 'package:think_of_a_number/Pages/Remainder5.dart';
-import 'package:think_of_a_number/Pages/Remainder7.dart';
-import 'package:think_of_a_number/Pages/Results.dart';
-import 'package:think_of_a_number/Pages/Welcome.dart';
-import 'package:think_of_a_number/Services.dart';
+import 'package:think_of_a_number/pages/Remainder3.dart';
+import 'package:think_of_a_number/pages/Remainder5.dart';
+import 'package:think_of_a_number/pages/Remainder7.dart';
+import 'package:think_of_a_number/pages/Results.dart';
+import 'package:think_of_a_number/pages/Welcome.dart';
+import 'package:think_of_a_number/services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
