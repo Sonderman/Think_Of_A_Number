@@ -27,7 +27,7 @@ class WelcomeView extends GetView<GameController> {
           IconButton(
             icon: Icon(Icons.settings, size: 24.w), // Responsive icon size
             tooltip: 'Settings', // Accessibility feature
-            onPressed: () => Get.toNamed(Routes.SETTINGS), // Navigate to settings
+            onPressed: () => Get.toNamed(Routes.settings), // Navigate to settings
           ),
         ],
       ),
@@ -77,7 +77,7 @@ class WelcomeView extends GetView<GameController> {
                 ElevatedButton(
                   // Use the controller's method to navigate.
                   // We navigate to Remainder 3 screen first.
-                  onPressed: () => Get.toNamed(Routes.REMAINDER_3),
+                  onPressed: () => Get.toNamed(Routes.remainder3),
                   style: ElevatedButton.styleFrom(
                     // Responsive padding
                     padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 15.h),

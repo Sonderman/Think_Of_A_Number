@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:think_of_a_number/app/modules/game/bindings/game_binding.dart'; // Import GameBinding
 import 'package:think_of_a_number/app/modules/game/views/welcome_view.dart'; // Import WelcomeView
@@ -20,42 +19,42 @@ class AppPages {
 
   // Define the initial route that the application will start with.
   // Typically the welcome screen or home screen.
-  static const INITIAL = Routes.WELCOME; // Start with the welcome screen
+  static const initial = Routes.welcome; // Start with the welcome screen
 
   // List of all routes defined using GetPage.
   static final routes = [
     GetPage(
-      name: _Paths.WELCOME,
+      name: _Paths.welcome,
       page: () => const WelcomeView(), // Use actual WelcomeView
       binding: GameBinding(), // Use GameBinding
       // Placeholder removed
     ),
     GetPage(
-      name: _Paths.REMAINDER_3,
+      name: _Paths.remainder3,
       page: () => const Remainder3View(), // Use actual Remainder3View
       binding: GameBinding(), // Use GameBinding
       // Placeholder removed
     ),
     GetPage(
-      name: _Paths.REMAINDER_5,
+      name: _Paths.remainder5,
       page: () => const Remainder5View(), // Use actual Remainder5View
       binding: GameBinding(), // Use GameBinding
       // Placeholder removed
     ),
     GetPage(
-      name: _Paths.REMAINDER_7,
+      name: _Paths.remainder7,
       page: () => const Remainder7View(), // Use actual Remainder7View
       binding: GameBinding(), // Use GameBinding
       // Placeholder removed
     ),
     GetPage(
-      name: _Paths.RESULTS,
+      name: _Paths.results,
       page: () => const ResultsView(), // Use actual ResultsView
       binding: GameBinding(), // Use GameBinding
       // Placeholder removed
     ),
     GetPage(
-      name: _Paths.SETTINGS,
+      name: _Paths.settings,
       page: () => const SettingsView(), // Use actual SettingsView
       binding: SettingsBinding(), // Use actual SettingsBinding
       // Placeholder removed

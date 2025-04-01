@@ -32,22 +32,25 @@ class SettingsView extends GetView<SettingsController> {
               SizedBox(height: 10.h),
               // Use Obx to reactively update the radio buttons based on controller state.
               Obx(
-                () => Column(
+                () => Row(
                   children: [
-                    _buildThemeRadioListTile(
-                      title: 'System Default',
+                    _buildThemeCard(
+                      icon: Icons.settings,
+                      title: 'System',
                       value: ThemeMode.system,
                       groupValue: controller.themeMode.value,
                       onChanged: (value) => controller.changeThemeMode(value!),
                     ),
-                    _buildThemeRadioListTile(
-                      title: 'Light Mode',
+                    _buildThemeCard(
+                      icon: Icons.light_mode,
+                      title: 'Light',
                       value: ThemeMode.light,
                       groupValue: controller.themeMode.value,
                       onChanged: (value) => controller.changeThemeMode(value!),
                     ),
-                    _buildThemeRadioListTile(
-                      title: 'Dark Mode',
+                    _buildThemeCard(
+                      icon: Icons.dark_mode,
+                      title: 'Dark',
                       value: ThemeMode.dark,
                       groupValue: controller.themeMode.value,
                       onChanged: (value) => controller.changeThemeMode(value!),
@@ -64,19 +67,60 @@ class SettingsView extends GetView<SettingsController> {
   }
 
   // Helper widget to create themed RadioListTile.
-  Widget _buildThemeRadioListTile({
+  Widget _buildThemeCard({
+    required IconData icon,
     required String title,
     required ThemeMode value,
     required ThemeMode groupValue,
     required ValueChanged<ThemeMode?> onChanged,
   }) {
-    return RadioListTile<ThemeMode>(
-      title: Text(title, style: GoogleFonts.lato(fontSize: 16.sp)),
-      value: value,
-      groupValue: groupValue,
-      onChanged: onChanged,
-      activeColor: Theme.of(Get.context!).primaryColor, // Use Get.context! safely here
-      contentPadding: EdgeInsets.zero, // Remove default padding
+    final isSelected = value == groupValue;
+    return Expanded(
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 4.w),
+        child: Card(
+          elevation: 2,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10.r),
+            side: BorderSide(
+              color: isSelected ? Theme.of(Get.context!).colorScheme.primary : Colors.transparent,
+              width: 2,
+            ),
+          ),
+          child: InkWell(
+            borderRadius: BorderRadius.circular(10.r),
+            onTap: () => onChanged(value),
+            child: Padding(
+              padding: EdgeInsets.all(16.r),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Icon(
+                    icon,
+                    size: 24.r,
+                    color:
+                        isSelected
+                            ? Theme.of(Get.context!).colorScheme.primary
+                            : Theme.of(Get.context!).textTheme.bodyLarge?.color,
+                  ),
+                  SizedBox(height: 8.h),
+                  Text(
+                    title,
+                    style: GoogleFonts.lato(
+                      fontSize: 14.sp,
+                      fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                      color:
+                          isSelected
+                              ? Theme.of(Get.context!).colorScheme.primary
+                              : Theme.of(Get.context!).textTheme.bodyLarge?.color,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'app/services/ad_service.dart';
 
 // Import routes and themes
 import 'app/routes/app_pages.dart';
@@ -13,17 +14,24 @@ void main() async {
   // Ensure Flutter bindings are initialized
   WidgetsFlutterBinding.ensureInitialized();
 
+  await initializeServices();
+
+  // Run the application
+  runApp(const MyApp());
+}
+
+Future<void> initializeServices() async {
   // Initialize Google Mobile Ads SDK
   await MobileAds.instance.initialize();
 
   // Initialize GetStorage for persistent data (like theme settings)
   await GetStorage.init();
 
+  // Initialize and load banner ad service
+  await Get.putAsync(() => AdService().initBannerAd());
+
   // Initialize SettingsController after storage is ready
   Get.put(SettingsController());
-
-  // Run the application
-  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -43,7 +51,7 @@ class MyApp extends StatelessWidget {
           title: "Think of a Number",
           debugShowCheckedModeBanner: false, // Hide debug banner
           // --- Routing ---
-          initialRoute: AppPages.INITIAL, // Set the initial route (e.g., '/home')
+          initialRoute: AppPages.initial, // Set the initial route (e.g., '/home')
           getPages: AppPages.routes, // Define all application routes
           // --- Theming ---
           theme: AppTheme.lightTheme, // Define the light theme

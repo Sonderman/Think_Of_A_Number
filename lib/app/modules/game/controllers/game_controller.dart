@@ -30,7 +30,8 @@ class GameController extends GetxController {
   /// Calculates the possible numbers based on the provided remainders.
   /// This logic is based on the Chinese Remainder Theorem principles
   /// for moduli 3, 5, and 7.
-  void _calculatePossibleResults() {
+  // Testler için protected yapıldı
+  void calculatePossibleResultsForTest() {
     if (!allRemaindersProvided) {
       // Should not happen if UI flow is correct, but good practice to check.
       printError(info: "Attempted to calculate results before all remainders were provided.");
@@ -110,20 +111,20 @@ class GameController extends GetxController {
   /// Stores the remainder for modulus 3 and navigates to the next step.
   void submitRemainder3(int remainder) {
     remainder3.value = remainder;
-    Get.toNamed(Routes.REMAINDER_5); // Navigate to next screen
+    Get.toNamed(Routes.remainder5); // Navigate to next screen
   }
 
   /// Stores the remainder for modulus 5 and navigates to the next step.
   void submitRemainder5(int remainder) {
     remainder5.value = remainder;
-    Get.toNamed(Routes.REMAINDER_7); // Navigate to next screen
+    Get.toNamed(Routes.remainder7); // Navigate to next screen
   }
 
   /// Stores the remainder for modulus 7, calculates results, and navigates.
   void submitRemainder7(int remainder) {
     remainder7.value = remainder;
-    _calculatePossibleResults(); // Calculate results now
-    Get.toNamed(Routes.RESULTS); // Navigate to results screen
+    calculatePossibleResultsForTest(); // Calculate results now
+    Get.toNamed(Routes.results); // Navigate to results screen
   }
 
   /// Resets the game state to start over.
@@ -132,9 +133,8 @@ class GameController extends GetxController {
     remainder5.value = null;
     remainder7.value = null;
     possibleResults.clear();
-    finalResult.value = null;
     // Removed guessMode reset
-    Get.offAllNamed(Routes.WELCOME); // Navigate back to welcome screen
+    Get.offAllNamed(Routes.welcome); // Navigate back to welcome screen
   }
 
   // Removed changeGuessMode method
